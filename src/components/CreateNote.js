@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Redirect from 'react-router-dom/Redirect';
-import { addNote, getNextId } from './exampleNotes';
 
 class CreateNote extends Component {
     constructor(props) {
@@ -22,17 +21,17 @@ class CreateNote extends Component {
     this.setState({content:e.target.value});
   }
 
-  onClick(e) {
-    const title = this.state.title;
-    const content = this.state.content;
-    if (title !== '' && content !== '') {
-      addNote({
-        id: Math.floor(Math.random() * 1000),
-        title: title,
-        text: content
-      });
-    }
-  }
+//   onClick(e) {
+//     const title = this.state.title;
+//     const content = this.state.content;
+//     if (title !== '' && content !== '') {
+//       addNote({
+//         id: Math.floor(Math.random() * 1000),
+//         title: title,
+//         text: content
+//       });
+//     }
+//   }
     // constructor(props) {
     //     super(props);
     //     this.updateNote = this.updateNote.bind(this);

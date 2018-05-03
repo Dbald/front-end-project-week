@@ -1,23 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const port = 3000;
 
-const server = express();
 let nextId = 10;
 
 function getNewId() {
     return nextId++;
 }
 
-server.use(bodyParser.json());
-server.use(cors());
-
-const sendUserError = (msg, res) => {
-    res.status(422);
-    res.json({ Error: msg });
-    return;
-};
 
 let notes = [
     {
@@ -67,21 +54,8 @@ let notes = [
     }
 ];
 
-server.get('/notes', (req, res) => {
-    res.json(notes);
-    // res.set('Content-type', 'application/json');
-    // res.type('')
-    // res.send(JSON.stringify(notes));
-    //JSON.parse() to turn back into an object
+function getNotes() {
+    return notes;
+};
 
-    // server.post('/notes', (req, res) => {
-    //     const { id, title, text } = req.body;
-    //     const newNote = { title, text, id: nextId };
-    //      if (!id || !title || !text) {
-    //         return sendUserError(
-    //             'No Notes.',
-    //             res
-    //         )
-    //     };
-    // });
-});
+export default getNotes;

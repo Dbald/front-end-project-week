@@ -4,7 +4,7 @@ import Sidebar from './components/SideBar'
 //import View from './components/View';
 import CreateNote from './components/CreateNote';
 import List from './components/List';
-import { getNotes } from './components/exampleNotes';
+import getNotes from './components/exampleNotes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 class App extends Component {
 

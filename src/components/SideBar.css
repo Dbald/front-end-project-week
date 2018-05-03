@@ -4,26 +4,19 @@
     width: 28.6%;
     background: lightgrey;
     float: left;
-  
     border:  1px solid gray;
     box-sizing: border-box;
     min-width: 20%;
-    
   }
-  
-  #title {
+#title {
     font-size: 3.3em;
     color: rgb(51, 51, 51);
     padding-left: 4%;
     margin-left: 1%;
-    
   }
-  
-  h1 {
+h1 {
     color: rgb(51, 51, 51);
-    
   }
- 
 .sidebutton {
     background: teal;
     color: white;
@@ -34,7 +27,6 @@
     width: 89%;
     border:  1px solid gray;
   }
-  
-  .sidebutton:hover {
+.sidebutton:hover {
     background: blue;
   }

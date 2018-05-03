@@ -38,7 +38,7 @@ class List extends Component {
                             return (
                                 <li className="note-container-list" key={notes.id}>
                                     <h2>{notes.title}<hr/></h2>
-                                    <p>{notes.text}<br/></p>
+                                    <p>{notes.content}<br/></p>
                                 </li>
                             )
                         })}

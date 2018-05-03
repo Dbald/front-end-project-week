@@ -3,8 +3,6 @@ import './Delete.css';
 
 
 function Delete(props) {
-
-  
   return (
     <div className='Note'>
       <div className='box'>
@@ -18,6 +16,4 @@ function Delete(props) {
   );
 }
 
-
-export default Delete; 
-    
+export default Delete;

@@ -7,7 +7,7 @@ class CreateNote extends Component {
         super(props);
         this.state = {
         title:'',
-        text:''
+        content:''
     };
     this.onClick = this.onClick.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
@@ -19,17 +19,17 @@ class CreateNote extends Component {
   }
 
   onDataChange(e) {
-    this.setState({text:e.target.value});
+    this.setState({content:e.target.value});
   }
 
   onClick(e) {
     const title = this.state.title;
-    const text = this.state.text;
-    if (title !== '' && text !== '') {
+    const content = this.state.content;
+    if (title !== '' && content !== '') {
       addNote({
         id: Math.floor(Math.random() * 1000),
         title: title,
-        text: text
+        text: content
       });
     }
   }
@@ -92,9 +92,9 @@ render() {
                     className='form-control1'
                     type='text'
                     placeholder='Note Content'
-                    name='text'
+                    name='content'
                     onChange={this.onDataChange}
-                    value={this.state.text}
+                    value={this.state.content}
                 />
                 <button id='save' type='submit' onClick={this.onClick}><b>Save</b></button>
             </form>

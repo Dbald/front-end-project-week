@@ -7,7 +7,7 @@ export default class List extends Component {
     return notes.map(n => (
         
         <div className="Notes">
-              <h2><Link to={`/notes/${n.id}`}>
+              <h2 ><Link className="title" to={`/notes/${n.id}`}>
                 {n.title}</Link>
                 <hr />
               </h2>

@@ -9,6 +9,7 @@ a {
   text-decoration: none;
   color: azure
 }
+
 P {
   color: azure
 }
@@ -25,7 +26,17 @@ P {
   border: 1px solid gray;
   box-sizing: border-box;
   border-radius: 25px;
-  margin-bottom: 5%
+  margin-bottom: 5%;
+  transition: transform 2s
+}
+.Notes:hover {
+  transform: scale(1.2)
+}
+.title {
+  transition: transform 2s
+}
+.title:hover {
+  font-weight: 100 ;
 }
 /*CreateNote*/
 

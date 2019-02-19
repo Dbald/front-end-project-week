@@ -1,21 +1,31 @@
+body {
+  background: #DAE6E6
+}
 .App {
   width: 100%;
-  
+  margin: 2%
 }
-
+a {
+  text-decoration: none;
+  color: azure
+}
+P {
+  color: azure
+}
 /*Display*/
 .Notes {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  height: 120vh;
-  width: 70%;
-  background: rgb(240, 239, 239);
-  padding: 2%;
-  padding-top: 5%;
-  border:  1px solid gray;
+  text-align: center;
+  justify-content: space-evenly;
+  background: #00ACB4;
+  padding: 1%;
+  width: 40%;
+  height: 10%;
+  border: 1px solid gray;
   box-sizing: border-box;
-  
-  
+  border-radius: 25px;
+  margin-bottom: 5%
 }
 /*CreateNote*/
 
@@ -28,25 +38,27 @@
   padding-left: 2%;
 }
 
-#save {
+#save, #cancel {
   width: 40%;
-  margin: 0;
-  background: teal;
+  margin: 10px;
+  background: #00ACB4;
   color: white;
   font-size: x-large;
   margin-bottom: 6%;
   padding: 2%;
-  border:  1px solid gray;
+  border: 1px solid gray;
+  border-radius: 25px
 }
-#save:hover {
-  background: blue;
+#save:hover, #cancel:hover {
+  background: rgb(6, 54, 40);
+  cursor: pointer;
 }
 
-.form-control, .form-control1 {
+.form-control,
+.form-control1 {
   margin-bottom: 3%;
   padding: 3%;
   border-radius: 6px;
-
 }
 
 .form-control {
@@ -58,22 +70,38 @@
   width: 90%;
 }
 /*List*/
-.inner-notes {
-  display: inline-flex;
-  flex-wrap: wrap;
+.note-title {
+  margin-left: 5%
 }
-
+/* Create New Note  */
+.new-note {
+  display: flex
+}
 .note-container-list {
   display: inline;
   background: white;
   margin: 1%;
-  padding-left: 1.5%; 
+  padding-left: 1.5%;
   padding-right: 1.5%;
   border: solid black 1px;
 }
 .note-container-list:hover {
   background: gray;
 }
+/* View Note */
+.view-note, .note-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2%
+}
+/* Notes */
+.NotesPage {
+  display: flex;
+  flex-direction: column
 
-
-
+}
+.notewrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly
+}

@@ -6,7 +6,7 @@ function getNewId() {
 }
 
 
-let notes = [
+export let notes = [
     {
         id: 1,
         title: "Note Title",
@@ -54,8 +54,3 @@ let notes = [
     }
 ];
 
-function getNotes() {
-    return notes;
-};
-
-export default getNotes;

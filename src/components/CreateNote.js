@@ -1,107 +1,67 @@
-import React, { Component } from 'react';
-import Redirect from 'react-router-dom/Redirect';
+import React from "react";
+import { Link } from "react-router-dom";
 
-class CreateNote extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        title:'',
-        content:''
+export default class CreateNotes extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      note: {
+        title: "",
+        content: "",
+        createdAt: undefined,
+        updatedAt: undefined
+      }
     };
-    this.onClick = this.onClick.bind(this);
-    this.onNameChange = this.onNameChange.bind(this);
-    this.onDataChange = this.onDataChange.bind(this);
-    }
-
-  onNameChange(e) {
-    this.setState({title:e.target.value});
   }
 
-  onDataChange(e) {
-    this.setState({content:e.target.value});
-  }
+  updateValue = e => {
+    const { note } = this.state;
+    this.setState({
+      note: { ...note, [e.target.name]: e.target.value }
+    });
+  };
 
-//   onClick(e) {
-//     const title = this.state.title;
-//     const content = this.state.content;
-//     if (title !== '' && content !== '') {
-//       addNote({
-//         id: Math.floor(Math.random() * 1000),
-//         title: title,
-//         text: content
-//       });
-//     }
-//   }
-    // constructor(props) {
-    //     super(props);
-    //     this.updateNote = this.updateNote.bind(this);
-    //     this.save = this.save.bind(this);
-    // }
+  handleSave = e => {
+    e.preventDefault();
 
-    // // change(event) {
-    // //     const newState = {};
-    // //     newState[event.target.id] = event.target.value;
-    // //     this.setState(newState);
-    // // }
-    // updateNote = (event) => {
-    //   let { name, value } = event.target;
-    //   this.setState({ [name]: value });
-    // };
+    const id = this.props.onSave(this.state.note);
+    this.props.history.replace(`/notes/${id}`);
+  };
 
-    // // createNote() {
-    // //   if (this.state.notes === '') {return}
-    // //     let notesArr = this.state.notes;
-    // //     notesArr.push(this.state.notes);
-    // //     this.setState({
-    // //         title: '',
-    // //         text: ''
-    // //     }
-    // // )};
-    // save(event) {
-    //     event.preventDefault();
-    //         axios.post('http://localhost:3000/list/', this.state).then(() => {
-    //           window.location.href = '/';
-    //         })
-    //         .catch((error) => {
-    //           alert('Server error: Please try again later.');
-    //         });
-    //     }
-
-//   createNote = (event) => {
-//       event.preventDefault();
-//       this.props.newNote(this.state);
-//       this.setState({ redirect: true });
-//     };
-
-
-render() {
+  render() {
+    const { note } = this.state;
     return (
-        <div className="Notes">
-            <form id="form" onSubmit={this.onClick}>
-                <h1>Create New Note:</h1><br/>
-                <input
-                    className='form-control'
-                    type='text'
-                    placeholder='Note Title'
-                    name='title'
-                    onChange={this.onNameChange}
-                    value={this.state.title}
-                />
-                <textarea
-                    className='form-control1'
-                    type='text'
-                    placeholder='Note Content'
-                    name='content'
-                    onChange={this.onDataChange}
-                    value={this.state.content}
-                />
-                <button id='save' type='submit' onClick={this.onClick}><b>Save</b></button>
-            </form>
+      <div className="new">
+        <div className="new-note">
+          <form id="form" onSubmit={this.handleSave}>
+            <h1>Create New Note:</h1>
+            <br />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Note Title"
+              name="title"
+              onChange={this.updateValue}
+              value={note.title}
+            />
+            <textarea
+              className="form-control1"
+              type="text"
+              placeholder="Note Content"
+              name="content"
+              onChange={this.updateValue}
+              value={note.content}
+            />
+            <div className="button-holder">
+            <button id="save" type="submit">
+              <b>Save</b>
+            </button>
+            <Link to="/list">
+              <button id="cancel"><b>Cancel</b></button>
+            </Link></div>
+          </form>
         </div>
+      </div>
     );
   }
-
-
 }
-
-export default CreateNote;

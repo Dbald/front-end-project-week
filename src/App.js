@@ -1,46 +1,55 @@
 import React, { Component } from 'react';
-import './App.css';
-import Sidebar from './components/SideBar'
-//import View from './components/View';
-import CreateNote from './components/CreateNote';
-import List from './components/List';
-import getNotes from './components/exampleNotes';
+import Sidebar from './components/SideBar';
+import CreateNotes from './components/CreateNote';
+import Edit from './components/Edit';
+import Register from './Actions/register';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-class App extends Component {
+import './App.css';
 
-  state = {
-    notes: getNotes()
-  };
+import IndexPage from './pages/index';
+import ShowPage from './pages/show';
+
+class App extends Component {
+constructor() {
+  super();
+  this.state = {
+    notes: {
+  1:{
+      id: 1,
+      title: "Welcome To Why Note!",
+      content: "It's SUPER EASY to get started... Simply click the 'Create New Note' button to create your first Why Note!"
+  }
+}};
+}
+
+handleSave = (note) => {
+  const ids = Object.keys(this.state.notes);
+  const id = Math.max(...ids) + 1;
+
+  note['id'] = id;
+
+  const { notes } = this.state;
+
+  this.setState({
+    notes: {
+      ...notes,
+      [id]: note
+    }
+  });
+
+  return id;
+}
 
   render() {
     return (
       <Router>
         <div className="App">
           <Route path="/" component={Sidebar} />
-          <Route path="/list" render={state => <List notes={this.state.notes} exact />} />
-          <Route path="/createnote" component={state => <CreateNote notes={this.state.notes} exact />} />
-          <Route path='/delete/:id' component={List} exact />
-          <Route path="/exampleNotes/:id" component={getNotes} toggleDeleteModal={this.toggleDeleteModal}
-              processDelete={this.processDelete} />
-          {/* <Route path='/view/:id' render={() =>
-          this.state.notes[this.props.location.pathname.split('/')[2]] ? (
-            <View
-              index={this.props.location.pathname.split('/')[2]}
-              title={
-                this.state.notes[this.props.location.pathname.split('/')[2]]
-                  .title
-              }
-              text={
-                this.state.notes[this.props.location.pathname.split('/')[2]]
-                  .text
-              }
-              edit={this.edit}
-              delete={this.delete}
-              />
-            ):null
-          }
-          /> */}
-
+          <Route exact path="/register" render={Register} />
+          {/* <Route path="/view" render={ViewNotePage} /> */}
+          <Route path="/list" component={(props) => <IndexPage {...props} notes={this.state.notes}/>} />
+          <Route path="/notes/:id" component={(props) => <ShowPage {...props} note={this.state.notes[props.match.params.id]}/>} />
+          <Route path="/createnote" component={(props) => <CreateNotes {...props} onSave={this.handleSave}/>} />
         </div>
       </Router>
     );
